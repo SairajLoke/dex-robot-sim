@@ -4,7 +4,7 @@
 `grasp_lift` task, real grasp sampler) instead of a hand-rolled scene. As checked out, this repo's
 task/env pipeline doesn't build for *any* task — these are the fixes needed to get it further,
 roughly in increasing depth. See [docs/tactile-genesis-verification.md](../docs/tactile-genesis-verification.md)
-for the full story, including where this stopped.
+for the full story, including what the readings show.
 
 All of these are reconstructions/renames inferred directly from source (docstrings, single call
 sites, deprecation messages) — not guesses at new behavior.
@@ -33,46 +33,26 @@ math-utils convention Eden appears to follow.
 2. Append [`eden/utils_geom_additions.py`](eden/utils_geom_additions.py)'s three function
    definitions to the end of that same file.
 
-## 3. `src/registry.py` — `DEFAULT_RIGID_SOLVER_OPTIONS`
+## 3+4. `Eden/eden/envs/base.py` — `friction_cone`/`contact_resolution` routing and `max_FPS`
 
-This pinned Genesis build (v1.4.1) takes `friction_cone`/`contact_resolution` nested under
-`Scene(rigid_options=RigidOptions(...))`, not as flat `Scene(friction_cone=..., ...)` kwargs —
-but `eden/envs/base.py` splats any `EnvOptions` extra field straight into `Scene(**scene_kwargs)`,
-so a `RigidOptions` instance under the `"rigid_options"` key is what actually reaches `Scene()`
-correctly. Also needs real enum instances (`gs.friction_cone.elliptic`, not the string
-`"elliptic"`).
+`registry.py` (unmodified) sets `friction_cone="elliptic"` and `contact_resolution="signorini"` as
+extra `EnvOptions` fields, and `eden/envs/base.py` splats every extra straight into
+`gs.Scene(**scene_kwargs)`. In this pinned Genesis (v1.4.1) those two are `RigidOptions` fields, not
+`Scene` kwargs, so `Scene()` rejects them.
 
-**Apply:** in `dexterous-hands/src/registry.py`, replace:
-```python
-DEFAULT_RIGID_SOLVER_OPTIONS = {
-    "solver": "newton",
-    "friction_cone": "elliptic",
-    "contact_resolution": "signorini",
-}
-```
-with:
-```python
-import genesis as _gs
+**Do not** work around this in `registry.py` by passing a `RigidOptions` under the extras key
+`rigid_options`. That replaces the full `RigidOptions(dt=sim_dt, constraint_solver=..., ...)` Eden
+builds, so `dt` and every other Eden solver setting is lost. That was an earlier version of this
+patch, and it caused the `TypeError: float / NoneType` in `base_solver.py` that this directory used
+to document as an unresolved Genesis bug. It was our own override, not a Genesis bug.
 
-DEFAULT_RIGID_SOLVER_OPTIONS = {
-    "solver": "newton",
-    "rigid_options": _gs.options.RigidOptions(
-        friction_cone=_gs.friction_cone.elliptic,
-        contact_resolution=_gs.contact_resolution.signorini,
-    ),
-}
-```
+The fix is in `base.py`: pop those two extras, convert the strings to the `gs` enums, and pass them
+into Eden's own `RigidOptions(...)` call. The same diff also renames the deprecated
+`ViewerOptions(max_FPS=...)` to `refresh_rate=...` (the deprecation message says it maps to the
+same thing; this Genesis hard-errors when both are considered set).
 
-## 4. `Eden/eden/envs/base.py` — deprecated `max_FPS` kwarg
-
-`eden/envs/base.py` builds `ViewerOptions(max_FPS=int(1 / env_options.sim_dt), ...)`. This
-Genesis build raises (not just warns) when `max_FPS` and `refresh_rate` are both considered set,
-which happens here via Genesis's own internal option-propagation step. The deprecation warning
-itself says `max_FPS` "now maps to `refresh_rate`", so using the new name directly is the same
-value, not new behavior.
-
-**Apply:** in `Eden/eden/envs/base.py`, change `max_FPS=int(1 / env_options.sim_dt)` to
-`refresh_rate=int(1 / env_options.sim_dt)`.
+**Apply:** `cd Eden && git apply ../patches/eden/envs_base.diff`, or from the repo root of
+tactile-genesis, `git apply` the diff as written. `registry.py` stays untouched.
 
 ## 5. Your own script needs `en.init(...)`
 
@@ -80,12 +60,24 @@ Not a repo bug — `main.py` calls `en.init(backend=..., log_root_path=...)` (wh
 `gs.init()` internally) before building any config; a standalone script bypassing `main.py` needs
 the same call first, or `gs.EPS`/Eden's logger are both unset and everything downstream fails.
 
+## 6. `Eden/eden/entities/rigid.py` — `set_mass_shift` / `set_COM_shift` / `get_links_inertial_mass`
+
+Eden delegates these to Genesis entity methods that v1.4.1 no longer has. Shims reimplement them with
+the absolute `get_links_mass/set_links_mass` and `get_links_COM/set_links_COM`, caching nominal values
+so shifts stay relative. Per-env values need `RigidOptions.batch_links_info=True`; with one env that is
+not needed, and the shim raises for unbatched `num_envs > 1`.
+
+## 7. `Eden/eden/managers/termination_manager.py` — `get_term_dones`
+
+Called by the env but only `get_term` exists; added `get_term_dones = get_term`.
+
+## Applying
+
+`scripts/apply_patches.sh` applies all of the above idempotently (`utils_geom.diff`, `envs_base.diff`,
+`entities_rigid.diff`, `termination_alias.diff`, plus copying `managers_terms_utils.py`). The manual
+steps listed under fixes 1-2 are superseded by it.
+
 ## Where this stopped
 
-One more layer in: `genesis/engine/solvers/base_solver.py` computes
-`sim.dt / options.dt if "dt" in options.model_fields_set else sim.substeps`, and by this point
-`options.dt` (on the `RigidOptions` instance from fix #3) is `None` while still showing up in
-`model_fields_set` — a `model_copy_from`/`model_construct` interaction inside Genesis's own
-pydantic Options framework, not something traceable to one obvious line. That's genuinely
-framework-internal, stateful behavior rather than a renameable/reconstructable gap, so this is
-where the reconstruction effort stopped.
+The env builds, resets and steps. See `docs/tactile-genesis-verification.md` for what the tactile
+readings do and do not show.

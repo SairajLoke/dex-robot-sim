@@ -1,0 +1,14 @@
+diff --git a/Eden/eden/managers/termination_manager.py b/Eden/eden/managers/termination_manager.py
+index ee18bbb..74ce3d7 100644
+--- a/Eden/eden/managers/termination_manager.py
++++ b/Eden/eden/managers/termination_manager.py
+@@ -100,6 +100,9 @@ class TerminationManager(ManagerBase[TerminationManagerOptions]):
+     def get_term(self, name: str) -> torch.Tensor:
+         return self._term_dones[name]
+ 
++    # shared_terms.termination_penalty calls this name; the vendored Eden only has get_term.
++    get_term_dones = get_term
++
+     def _prepare_terms(self):
+         self._terms: dict[str, TerminationTermLike] = dict()
+         self._reset_terms: list[TerminationTerm] = []

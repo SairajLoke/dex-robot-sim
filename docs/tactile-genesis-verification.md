@@ -125,66 +125,60 @@ geometry fix (self-collision-safe bend targets, taxel-surface placement) kept sh
 other two fingers needed the object to be, and iterating all three into alignment at once is a
 multi-variable search I didn't finish closing.
 
-## Follow-up: trying the paper's own grasp pipeline instead
 
-Given the manual calibration above was fighting self-collision and placement issues that the
-paper's own task/grasp-sampling code (`conf/sample_grasps/*.yaml`, the `grasp_lift` task) already
-solves, I tried constructing their actual Eden task env directly
-(`scripts/run_grasp_lift_probe.py`, via `registry.get_task_config` + `RslRlVecEnvWrapper`) instead
-of continuing to hand-roll geometry. Note this never trains or runs a policy — `env.reset()` alone
-is what gives a correctly-placed, paper-sampled grasp pose for free; stepping uses all-zero
-actions purely to read sensor output over time.
+## Follow-up: the paper's own `grasp_lift` env, now building and running
 
-**This repo's task/environment pipeline doesn't build as checked out, for any task** — not
-specific to `grasp_lift`. Reconstructing just far enough to see that is itself the finding here.
-Five issues, each one surfaced only after fixing the last, documented in full in
-[patches/README.md](../patches/README.md):
+Superseding the "stopped at a 6th bug" account in earlier commits: that 6th bug (`float / NoneType`
+in `base_solver.py`) was **caused by my own `registry.py` override**, which replaced Eden's
+`RigidOptions` and lost its `dt`. It was not a Genesis bug. `registry.py` is now untouched and
+`friction_cone`/`contact_resolution` are routed into Eden's own `RigidOptions` in `eden/envs/base.py`.
+Two more mechanical gaps followed (Genesis v1.4.1 dropped `set_mass_shift`/`set_COM_shift`, which
+Eden's `rigid.py` still delegates to; `TerminationManager.get_term_dones` is called but only
+`get_term` exists). Shims for both are in `patches/eden/`. Apply everything with
+`scripts/apply_patches.sh` (run automatically by `scripts/setup_remote_env.sh`).
 
-1. `src/shared_terms.py` (imported by every task config) imports
-   `eden.managers.terms.utils.soft_dof_pos_violation`, which doesn't exist anywhere in the
-   vendored `Eden/` snapshot. Reconstructed from its one call site (a soft joint-limit penalty).
-2. The same import line also needs 4 quaternion helpers from `eden.utils.geom`
-   (`axis_angle_from_quat`, `inv_quat`, `quat_error_magnitude`, `quat_mul`) — none exist in the
-   vendored copy. Reconstructed from the (w, x, y, z) convention already used elsewhere in that
-   file and Genesis's own equivalent numpy implementations; sanity-checked standalone against
-   known 90°/45° rotations before use.
-3. A standalone script needs its own `en.init(...)` call before building any config (not a repo
-   bug — `main.py` does this and I initially didn't).
-4. This pinned Genesis build (v1.4.1) wants `friction_cone`/`contact_resolution` nested under
-   `Scene(rigid_options=RigidOptions(...))`, not as flat kwargs the way this repo's own
-   `src/registry.py` sets them.
-5. `eden/envs/base.py` passes the deprecated `max_FPS=` kwarg to `ViewerOptions`, which this
-   Genesis build hard-errors on (not just warns) once its own internal option-propagation also
-   touches `refresh_rate`.
+Result: `grasp_lift` / Allegro / `actual-hand/force_torque` builds, resets and steps with 18 tactile
+force/torque sensors plus ground-truth contact and distance probes (`scripts/run_grasp_lift_probe.py`).
 
-**Where it stopped:** one layer deeper, `genesis/engine/solvers/base_solver.py` computes
-`sim.dt / options.dt if "dt" in options.model_fields_set else sim.substeps`. By this point the
-`RigidOptions` instance from fix #4 has `dt=None` but is somehow *also* showing up in
-`model_fields_set` — a `model_copy_from`/`model_construct` interaction inside Genesis's own
-pydantic Options framework, not a renameable kwarg or a reconstructable missing function. That's
-genuinely framework-internal, stateful behavior I can't safely patch without a much deeper dive
-into how Genesis's Options classes propagate fields between each other, so this is where the
-reconstruction effort stopped, per the standing instruction not to guess blindly at that depth.
+Two facts about the task that the earlier text got wrong:
+- `grasp_lift` does **not** sample a grasp pose. The hand starts open, 0.08 m above the object.
+- The wrist action is an **absolute** pose (`RootPoseController`), so an all-zero action commands
+  z=0.74 and does not hold still. The zero-action probe reads exactly 0 on every sensor, which says
+  nothing about the sensors.
 
-Full tracebacks for each stage in `docs/grasp_lift_pipeline_bug.log` (original failure) — the
-later stages aren't separately saved but are reproducible by applying `patches/` and re-running
-`scripts/run_grasp_lift_probe.py`. This looks like an artifact of the vendoring/stripping process
-described in the top-level README ("Eden... stripped to the modules this project imports")
-combined with the vendored Eden snapshot predating some Genesis v1.4.1 API changes — worth
-flagging upstream if you're in touch with the authors, since it blocks reproducing *any* of the
-paper's actual tasks, not just this follow-up demo.
+### Scripted (non-learned) descend-and-close drive: `scripts/run_grasp_lift_scripted.py`
+
+Open-loop: align the wrist over the object, descend by 10/20 mm, close the finger bend joints. Ground
+truth is `RigidEntity.get_contacts()` bucketed by partner (object / table / hand self-contact).
+
+**Force/torque on the real hand+object is NOT verified.**
+- The fingertip taxel sensor has no object filter. It reads hand self-contact and table contact too.
+  Control (hover, fingers open) already gives thumb-tip peak 0.5677 and any-sensor peak 1.19.
+- Per-step thumb trace, 10 mm trial: taxels are loaded (10-30 taxels, sum |F| about 4-7) at every step
+  where ground truth shows thumb-tip/table contact (2-17 N) and the thumb is 3-14 cm from the object.
+  Thumb-tip/object contact only starts at step 116 and is weak (0.11-0.14 N). Taxel reading there:
+  sum |F| 0.85, 0.21, 0.21, then 0.0 while ground truth still shows 0.108 N on the object.
+- Index/middle/ring never touch the object, the object never lifts (dz about 0.001), and no
+  ElastomerTaxel deformation was measured on this pipeline.
+- Summary: the taxel signal tracks table contact; object contact in this run is too light and too
+  brief to separate from it.
+
+Logs: `docs/scripted_trace_10mm.log` (per-step thumb trace).
+
+### Unverified paper claims on this hardware
+16,384 envs / 600k steps/s throughput and the FOTS/HydroShear RMSE comparison were not attempted
+(8 GB GPU, no datasets).
 
 ## Honest summary
 
 - **Sensor physics (pytest suite): fully verified, high confidence.** 24/24 passed with
   closed-form and superposition-level assertions.
-- **Real hand on a real object: partially verified.** One fingertip of the paper's actual Allegro
-  asset shows correct, physically consistent force/torque from real contact with a real object,
-  using the real 368-taxel layout. Full 3-finger simultaneous contact with nonzero deformation
-  wasn't reached in the time available.
-- **Paper's own task pipeline: 5 bugs found and fixed, stopped at a 6th.** None of the 5 fixed
-  issues touch the sensing/physics claims themselves — they're all plumbing (missing functions,
-  deprecated kwargs, option-construction order) between the vendored Eden and the vendored
-  Genesis. The 6th is in Genesis's own Options/pydantic internals and would need real
-  investigation, not a quick patch, to resolve safely. All 5 fixes are saved under `patches/` so
-  a future attempt starts past this point rather than re-discovering it.
+- **Real hand on a real object, hand-built scene: partially verified.** One fingertip of the paper's
+  Allegro asset shows consistent force/torque from real object contact with the real 368-taxel
+  layout. No 3-finger contact, no deformation readings.
+- **Paper's own task pipeline: builds and runs** after the plumbing patches in `patches/` (all
+  mechanical; none touch the sensing/physics). **Tactile readings on it are not yet verified**
+  because the scripted drive does not produce clean object contact (see above).
+- **Next step to close this:** use a task that starts in contact (`in_hand_repose` or
+  `in_fingers_rotate` with the grasp cache in `conf/sample_grasps/*.yaml`) so every fingertip loads
+  against the object from step 0, and compare against hand-self/table baseline.

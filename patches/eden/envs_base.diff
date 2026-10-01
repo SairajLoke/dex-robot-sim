@@ -1,0 +1,44 @@
+diff --git a/Eden/eden/envs/base.py b/Eden/eden/envs/base.py
+index 565354b..6225569 100644
+--- a/Eden/eden/envs/base.py
++++ b/Eden/eden/envs/base.py
+@@ -201,6 +201,13 @@ class EnvBase(DrawDebugMixin, RBC):
+         self._post_build_hooks: list[Callable[[], None]] = []
+ 
+         # create scene
++        # friction_cone/contact_resolution are RigidOptions fields in this Genesis build, not Scene kwargs
++        _extras = env_options.__pydantic_extra__ or {}
++        _rigid_extras = {
++            k: (getattr(gs, k)[_extras[k]] if isinstance(_extras[k], str) else _extras[k])
++            for k in ("friction_cone", "contact_resolution")
++            if k in _extras
++        }
+         # Build default scene kwargs from env_options fields
+         scene_kwargs = dict(
+             sim_options=gs.options.SimOptions(
+@@ -209,7 +216,7 @@ class EnvBase(DrawDebugMixin, RBC):
+                 requires_grad=env_options.requires_grad,
+             ),
+             viewer_options=gs.options.ViewerOptions(
+-                max_FPS=int(1 / env_options.sim_dt),
++                refresh_rate=int(1 / env_options.sim_dt),
+                 camera_pos=(2.0, 0.0, 2.5),
+                 camera_lookat=(0.0, 0.0, 0.5),
+                 camera_fov=40,
+@@ -248,6 +255,7 @@ class EnvBase(DrawDebugMixin, RBC):
+                 batch_dofs_info=env_options.batch_dofs_info,
+                 enable_multi_contact=env_options.enable_multi_contact,
+                 noslip_iterations=env_options.noslip_iterations,
++                **_rigid_extras,
+             ),
+             coupler_options=env_options.coupler_options,
+             fem_options=env_options.fem_options,
+@@ -265,7 +273,7 @@ class EnvBase(DrawDebugMixin, RBC):
+         extras = env_options.__pydantic_extra__ or {}
+         internal_keys = {"_option_module_", "_option_class_"}
+         for key, value in extras.items():
+-            if key not in internal_keys:
++            if key not in internal_keys and key not in _rigid_extras:
+                 scene_kwargs[key] = value
+ 
+         # Explicit kwargs take highest priority

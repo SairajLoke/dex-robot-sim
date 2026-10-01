@@ -4,6 +4,7 @@
 # for the narrative version. Run from anywhere; everything lands under $WORKSPACE.
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE="${WORKSPACE:-/workspace}"
 REPO_DIR="$WORKSPACE/tactile-genesis"
 
@@ -37,6 +38,8 @@ fi
 
 uv sync
 uv pip install pytest syrupy pytest-print -q
+
+REPO_DIR="$REPO_DIR" "$SCRIPT_DIR/apply_patches.sh"
 
 echo
 echo "Setup complete. Activate with:"
