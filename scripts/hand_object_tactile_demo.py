@@ -7,6 +7,11 @@ fingertip taxel layout (src/assets/sensors/allegro/actual/probes_368_hand_allegr
 restricted to the 4 fingertip links. Not the paper's RL task/policy stack -- this is a
 scripted open/close to directly exercise the sensors against a real hand + real object,
 headless, logging CSV + a summary plot.
+
+WARNING: the sensor parameters below (elastomer dilate_scale=0.1, shear_scale=1.0, n_sample_points=600,
+normal_exponent=1.5; force_torque shear_scalar=4.0, ...) are NOT the paper's (conf/sensor/tactile_params.yaml:
+dilate_scale 100, shear_scale 200, n_sample_points 1000, normal_exponent 1.2, shear_scalar 2.0). Elastomer zeros
+from this script are therefore not evidence about the sensor. Use press_single_fingertip.py (loads the yaml).
 """
 
 import csv

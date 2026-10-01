@@ -225,8 +225,53 @@ Pooled elastomer data (press_el + rec_el + rec_el_r3, 3760 fingertip-steps,
 - The v141r3 grasp cache (`rec_el_r3`) did not give a firmer grasp: max displacement 7 mm, hold-phase
   loading near zero.
 
-So the elastomer sensor responds to contact in the direction expected, but on this pipeline it is sparse,
-noisy and only weakly correlated with the ground truth. The claim is still not verified quantitatively.
+On this pipeline the elastomer is sparse, noisy and only weakly correlated with the ground truth. The
+claim is not verified. (The clean press below explains why: in rigid-contact presses the elastomer is
+zero by construction, so the in-hand bursts come from transient probe penetration, not from loading.)
+
+### Correction to the first hand-built demo
+
+`hand_object_tactile_demo.py` used sensor parameters that are not the paper's (elastomer `dilate_scale=0.1`,
+`shear_scale=1.0`, `n_sample_points=600`, `normal_exponent=1.5` vs the paper's 100 / 200 / 1000 / 1.2; force_torque
+`shear_scalar=4.0` vs 2.0). My earlier statement that elastomer zeros there pointed to a sensor problem was
+therefore partly my own parameter error. The script now carries a warning; all later scripts load
+`conf/sensor/tactile_params.yaml`.
+
+## Clean controlled press (single fingertip, fixed sphere): `scripts/press_single_fingertip.py`
+
+The in-hand cube tumbles under any squeeze, so this uses a controlled scene instead: the paper's Allegro asset,
+middle finger only, bend targets ramped slowly into a fixed sphere (radius 75 mm, no gravity), the paper's
+sensor parameters (loaded from `conf/sensor/tactile_params.yaml`), and per-step GT contact force from the rigid
+solver. Data: `docs/data/press_single*.npz`, plot `docs/data/press_single_summary.png`
+(`scripts/plot_press_single.py`).
+
+| run | what | GT hand-sphere force | force_torque taxel sum | elastomer max |disp| |
+|---|---|---|---|---|
+| `press_single` (bend 0.3 -> 1.2) | rigid sphere | 1.8 -> 5.9 N, smooth | 0.79 -> 0.87 (4 taxels loaded) | **0 at every step** |
+| `press_single_n20000`, `_n100000` | same, 20x / 100x more elastomer sample points | same | same | **0** |
+| `press_single_deep` (bend 0.3 -> 1.6) | rigid sphere, deeper | 2.3 -> 9.6 N | 0.79 -> 0.92 | **0**; closest probe stays 0.94 mm outside the surface, never inside |
+| `press_single_ghost`, `_ghost_fine` | sphere does not collide with the hand (disjoint contact mask), so probes can pass through | 0 | 0 | rises smoothly with penetration depth: about 0 at <3 mm, 1.5 at 10 mm, 4.5 at 20 mm, 8 at 27 mm, 17 at 40 mm; correlation with depth 0.94-0.96 |
+
+Results:
+
+1. **The clean force-vs-elastomer-deformation curve cannot be produced with a rigid object on this pipeline.**
+   With real contact (GT force 2-10 N) the elastomer output is exactly zero. Reason, from
+   `genesis/engine/sensors/point_cloud_tactile.py`: elastomer depth at each probe is `max(0, -SDF)` evaluated at the
+   probe position against the tracked object's collision geometry, so a probe has to be *inside* the object.
+   The rigid solver stops the fingertip surface (where the probes sit) about 1 mm outside the object, so depth is
+   always 0. Measured directly: minimum probe signed distance +0.94 mm over the whole deep press.
+2. **The elastomer sensor itself works.** When probes are allowed inside the sphere (ghost runs), the output is
+   non-zero, monotone and smooth in penetration depth (the third panel). So the sensor reacts to
+   penetration, not to contact force. Obtaining a force-vs-deformation curve would need either a soft/penetrable
+   contact model or a force-to-penetration mapping that I did not find in the released code.
+3. **force_torque saturates.** Over a 5x rise in GT force the taxel sum rises about 10% (0.79 -> 0.92) and only 4
+   taxels load, so it is a proximity/contact indicator here, not a force measurement.
+4. In ghost mode force_torque reads 0 (it needs real solver contact), so the two sensors never both respond in
+   the same run.
+5. The ghost-run trajectories oscillate (the PD-driven finger swings through the sphere), so penetration depth,
+   not time, is the valid x axis; depths of 20-70 mm are far beyond a physical indentation and only show the trend.
+6. `scripts/run_press_sweep.py` (8-env amplitude sweep on the cube) was not clean (GT force non-monotone, cube
+   unstable) and is kept only for completeness (`docs/data/sweep_el.npz`).
 
 ## Honest summary
 
@@ -238,9 +283,10 @@ noisy and only weakly correlated with the ground truth. The claim is still not v
 - **Paper's own task pipeline (`in_fingers_rotate`): runs, with patches in `patches/`.** The
   force_torque taxel loading follows object proximity (verified), but its magnitude is not
   proportional to the ground-truth contact force (weak correlation).
-- **Elastomer deformation on the paper's pipeline: qualitative dose-response only.** Loading rises
-  with GT force (0.006 -> 0.34 across bins) but is sparse, spiky and weakly correlated (0.13-0.28).
-  Not verified quantitatively.
+- **Elastomer deformation: not verified against contact force.** In a clean rigid press (GT force up to 9.6 N) the
+  elastomer is exactly 0 because probes never get inside the object (closest +0.94 mm outside). It does respond
+  smoothly to probe penetration depth when penetration is allowed (ghost sphere), so the sensor works but is not a
+  force-to-deformation model for rigid contact. In-hand bursts (loaded fraction 0.006 -> 0.34 across GT bins,
+  correlation 0.13-0.28) are sparse and spiky.
 - **Not attempted:** 16,384-env / 600k steps/s throughput; FOTS / HydroShear RMSE comparison.
-- **Next step:** a clean controlled press (the squeeze here tumbles the cube), and time-alignment of
-  taxel readings with `obj_force`.
+- **Next step:** 16,384-env throughput, then the FOTS / HydroShear comparison.
