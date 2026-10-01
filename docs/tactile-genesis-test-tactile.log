@@ -1,0 +1,82 @@
+[Quadrants] version 1.3.0, llvm 22.1.0, commit ab9a58ab, linux, python 3.12.14
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /workspace/tactile-genesis/dexterous-hands/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspace/tactile-genesis/Genesis
+configfile: pyproject.toml
+plugins: forked-1.7.5, print-1.3.0, xdist-3.8.0, platformdirs-4.12.2, syrupy-6.1.1, anyio-4.15.1, timeout-2.4.0, quadrants-1.3.0
+timeout: 1200.0s
+timeout method: signal
+timeout func_only: False
+created: 3/3 workers
+3 workers [24 items]
+
+scheduling tests via WorkStealingScheduling
+
+tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[2] 
+tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[0] 
+tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[0] 
+[gw0][36m [  4%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[0] 
+tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[2] 
+[gw1][36m [  8%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[2] 
+tests/sensors/test_tactile.py::test_filler_probes_radius_zero[0] 
+[gw2][36m [ 12%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[0] 
+tests/sensors/test_tactile.py::test_filler_probes_radius_zero[2] 
+[gw0][36m [ 16%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[2] 
+tests/sensors/test_tactile.py::test_raycast_probe_on_fully_fixed_solver 
+[gw1][36m [ 20%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_filler_probes_radius_zero[0] 
+[gw2][36m [ 25%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_filler_probes_radius_zero[2] 
+tests/sensors/test_tactile.py::test_contact_probe_hysteresis 
+tests/sensors/test_tactile.py::test_contact_depth_probe_hysteresis_gain_and_dead_resample 
+[gw0][36m [ 29%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_raycast_probe_on_fully_fixed_solver 
+tests/sensors/test_tactile.py::test_contact_depth_query_sdf_vs_raycast_parity 
+[gw2][36m [ 33%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_contact_depth_probe_hysteresis_gain_and_dead_resample 
+tests/sensors/test_tactile.py::test_filtered_contact_survives_prefilter_cap[2] 
+[gw1][36m [ 37%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_contact_probe_hysteresis 
+tests/sensors/test_tactile.py::test_filtered_contact_survives_prefilter_cap[0] 
+[gw0][36m [ 41%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_contact_depth_query_sdf_vs_raycast_parity 
+[gw2][36m [ 45%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_filtered_contact_survives_prefilter_cap[2] 
+[gw1][36m [ 50%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_filtered_contact_survives_prefilter_cap[0] 
+tests/sensors/test_tactile.py::test_kinematic_taxel_crosstalk 
+tests/sensors/test_tactile.py::test_proximity_taxel_crosstalk 
+tests/sensors/test_tactile.py::test_gaussian_crosstalk_kernel_helper 
+[gw1][36m [ 54%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_gaussian_crosstalk_kernel_helper 
+tests/sensors/test_tactile.py::test_proximity_taxel_twist_torque[2] 
+[gw2][36m [ 58%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_proximity_taxel_crosstalk 
+tests/sensors/test_tactile.py::test_proximity_sensor_box_on_box[0] 
+[gw0][36m [ 62%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_kinematic_taxel_crosstalk 
+tests/sensors/test_tactile.py::test_proximity_taxel_twist_torque[0] 
+[gw1][36m [ 66%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_proximity_taxel_twist_torque[2] 
+tests/sensors/test_tactile.py::test_elastomer_sensor_sphere_ground_dilate_shear[0] 
+[gw0][36m [ 70%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_proximity_taxel_twist_torque[0] 
+[gw1][36m [ 75%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_elastomer_sensor_sphere_ground_dilate_shear[0] 
+tests/sensors/test_tactile.py::test_elastomer_sensor_grid_box_sphere[2] 
+tests/sensors/test_tactile.py::test_proximity_sensor_box_on_box[2] 
+[gw2][36m [ 79%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_proximity_sensor_box_on_box[0] 
+[gw1][36m [ 83%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_elastomer_sensor_grid_box_sphere[2] 
+tests/sensors/test_tactile.py::test_elastomer_sensor_sphere_ground_dilate_shear[2] 
+[gw0][36m [ 87%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_proximity_sensor_box_on_box[2] 
+tests/sensors/test_tactile.py::test_elastomer_sensor_grid_box_sphere[0] 
+tests/sensors/test_tactile.py::test_heterogeneous_object 
+[gw2][36m [ 91%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_elastomer_sensor_sphere_ground_dilate_shear[2] 
+[gw1][36m [ 95%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_elastomer_sensor_grid_box_sphere[0] 
+[gw0][36m [100%] [0m[32mPASSED[0m tests/sensors/test_tactile.py::test_heterogeneous_object 
+
+[33m=============================== warnings summary ===============================[0m
+../dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491
+../dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491
+../dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491
+tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[0]
+tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[2]
+tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[0]
+  /workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================== slowest durations ===============================
+112.62s call     tests/sensors/test_tactile.py::test_kinematic_contact_probe_box_sphere_support[0]
+111.15s call     tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[2]
+109.75s call     tests/sensors/test_tactile.py::test_surface_distance_sensor_box_sphere[0]
+
+(69 durations < 100s hidden.)
+[33m================== [32m24 passed[0m, [33m[1m6 warnings[0m[33m in 318.83s (0:05:18)[0m[33m ==================[0m
