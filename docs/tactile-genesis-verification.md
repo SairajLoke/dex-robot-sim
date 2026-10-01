@@ -288,5 +288,13 @@ Results:
   smoothly to probe penetration depth when penetration is allowed (ghost sphere), so the sensor works but is not a
   force-to-deformation model for rigid contact. In-hand bursts (loaded fraction 0.006 -> 0.34 across GT bins,
   correlation 0.13-0.28) are sparse and spiky.
-- **Not attempted:** 16,384-env / 600k steps/s throughput; FOTS / HydroShear RMSE comparison.
-- **Next step:** 16,384-env throughput, then the FOTS / HydroShear comparison.
+- **16,384-env throughput: not reproducible on this GPU.** 16,384 no-sensor envs run out of memory at scene build
+  (8 GB card); the best that fits is 12,288 envs at about 6.6k samples/s (4,096 envs: 5.3k). The paper's claim is about
+  600k steps/s on an RTX 5090 in a different scene, so the two are not comparable. Step time is dominated by the env
+  managers (0.414 s per env.step vs 0.042 s raw scene.step at 1,024 envs). Elastomer sensors run out of memory at
+  1,024 envs (256 envs: 362 samples/s). Raw numbers: `docs/data/throughput_3060ti.txt`.
+- **FOTS / HydroShear comparison: blocked, not run.** The authors' `scripts/run_fots_compare.sh` cannot run as shipped:
+  (1) `DILATION_REG` is never defined (`set -u` abort), and `dilation_reg` is not an accepted `--sweep-x` axis in
+  `fots_marker_compare.py`; (2) the script builds `ElastomerTaxel(elastomer_boundary=...)`, an option that does not
+  exist in the pinned Genesis v1.4.1 (`Unrecognized attribute 'elastomer_boundary'`). Fix (1) is mechanical, but (2)
+  needs either a newer Genesis or `--no-boundary`, which changes the sensor being compared, so it was left alone.

@@ -1,0 +1,16 @@
+# RTX 3060 Ti 8GB (7.66 GiB usable), in_fingers_rotate/Allegro, zero actions, 40-60 timed env.step calls; scripts/bench_throughput.py
+## sweep 1 (no sensors)
+BENCH {"num_envs": 1, "sensors": "none", "build_s": 17.2, "env_steps_per_s": 10.42, "samples_per_s": 10, "peak_mem_gb": 0.0} | gpu_used_MiB_peak=592
+BENCH {"num_envs": 16, "sensors": "none", "build_s": 25.5, "env_steps_per_s": 4.52, "samples_per_s": 72, "peak_mem_gb": 0.0} | gpu_used_MiB_peak=592
+BENCH {"num_envs": 128, "sensors": "none", "build_s": 25.4, "env_steps_per_s": 3.89, "samples_per_s": 498, "peak_mem_gb": 0.02} | gpu_used_MiB_peak=658
+BENCH {"num_envs": 1024, "sensors": "none", "build_s": 26.0, "env_steps_per_s": 2.44, "samples_per_s": 2494, "peak_mem_gb": 0.13} | gpu_used_MiB_peak=1104
+BENCH {"num_envs": 4096, "sensors": "none", "build_s": 28.8, "env_steps_per_s": 1.28, "samples_per_s": 5254, "peak_mem_gb": 0.51} | gpu_used_MiB_peak=2586
+FAIL N=16384 rc=1: [38;5;226m[Genesis] [12:05:36] [WARNING] Filtered out geometry pairs causing self-collision for the neutral configuration (qpos0): (21, 24), (31, 34), (41, 44). Consider tuning Morph option 'decompos | gpu_used_MiB_peak=5388
+BENCH {"num_envs": 8192, "sensors": "none", "build_s": 110.1, "env_steps_per_s": 0.67, "samples_per_s": 5513, "peak_mem_gb": 1.01} | gpu_used_MiB_peak=5456
+BENCH {"num_envs": 12288, "sensors": "none", "build_s": 34.2, "env_steps_per_s": 0.54, "samples_per_s": 6587, "peak_mem_gb": 1.52} | gpu_used_MiB_peak=7840
+BENCH {"num_envs": 1024, "sensors": "actual-hand/force_torque", "build_s": 19.4, "env_steps_per_s": 1.88, "samples_per_s": 1929, "peak_mem_gb": 0.52} | gpu_used_MiB_peak=1984
+BENCH {"num_envs": 4096, "sensors": "actual-hand/force_torque", "build_s": 21.3, "env_steps_per_s": 1.16, "samples_per_s": 4733, "peak_mem_gb": 2.05} | gpu_used_MiB_peak=6188
+FAIL sensors=actual-hand/elastomer N=1024 rc=1:  | gpu_used_MiB_peak=6452
+FAIL sensors=actual-hand/elastomer N=4096 rc=1:  | gpu_used_MiB_peak=4964
+## elastomer rerun: N=256 BENCH num_envs=256 env_steps_per_s=1.41 samples_per_s=362 peak_mem_gb(torch)=2.43; N=1024 and N=4096 CUDA OOM at sensor build (single 1.26-1.51 GiB buffers)
+## step breakdown N=1024: env.step 0.4143 s, raw scene.step 0.0421 s
