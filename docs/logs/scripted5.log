@@ -1,0 +1,799 @@
+[38;5;159m[Genesis] [09:46:17] [INFO] [38;5;121m╭───────────────────────────────────────────────╮[0m[38;5;159m[0m
+[38;5;159m[Genesis] [09:46:17] [INFO] [38;5;121m│┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈[0m[38;5;159m [38;5;121m[1m[3mGenesis[0m[38;5;159m [38;5;121m┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈│[0m[38;5;159m[0m
+[38;5;159m[Genesis] [09:46:17] [INFO] [38;5;121m╰───────────────────────────────────────────────╯[0m[38;5;159m[0m
+[38;5;159m[Genesis] [09:46:17] [INFO] Running on [38;5;121m[4m[NVIDIA GeForce RTX 3060 Ti][0m[38;5;159m with backend [38;5;121m[4mgs.cuda[0m[38;5;159m. Device memory: [38;5;121m[4m7.66[0m[38;5;159m GB.[0m
+[38;5;159m[Genesis] [09:46:17] [INFO] 🚀 Genesis initialized. 🔖 version: [38;5;121m[4m1.4.1[0m[38;5;159m, 🎨 theme: [38;5;121m[4mdark[0m[38;5;159m, 🌱 seed: [38;5;121m[4m0[0m[38;5;159m, 🐛 debug: [38;5;121m[4mFalse[0m[38;5;159m, 📏 precision: [38;5;121m[4m32[0m[38;5;159m, 🔥 performance: [38;5;121m[4mFalse[0m[38;5;159m, 💬 verbose: [38;5;121m[4mINFO[0m[38;5;159m[0m
+[38;5;159m[Eden 🍏] [09:46:17] [INFO] [38;5;121m╭──────────────────────────────────────────────╮[0m[38;5;159m[0m
+[38;5;159m[Eden 🍏] [09:46:17] [INFO] [38;5;121m│┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈[0m[38;5;159m [38;5;121m[1m[3m Eden [0m[38;5;159m [38;5;121m┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈┉┈│[0m[38;5;159m[0m
+[38;5;159m[Eden 🍏] [09:46:17] [INFO] [38;5;121m╰──────────────────────────────────────────────╯[0m[38;5;159m[0m
+[38;5;159m[Eden 🍏] [09:46:17] [INFO] 🍎 Eden ver: [38;5;121m[4m4777fd5[0m[38;5;159m, 🌏 Genesis ver: [38;5;121m[4m4777fd5[0m[38;5;159m.[0m
+[38;5;159m[Eden 🍏] [09:46:17] [INFO] 💽 Log directory: [38;5;121m[4m/workspace/tactile-genesis/dexterous-hands/logs/tactile_probe/26Oct01T0946[0m[38;5;159m[0m
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=array([0.70710678, 0.    ...0.70710678, 0.        ]), input_type=ndarray])
+  return self.__pydantic_serializer__.to_python(
+[38;5;226m[Eden 🍏] [09:46:19] [WARNING] Dropping unknown keys when loading ColorTexture: {'is_black', 'requires_uv'}[0m
+[38;5;226m[Eden 🍏] [09:46:19] [WARNING] Dropping unknown keys when loading ColorTexture: {'is_black', 'requires_uv'}[0m
+[38;5;226m[Eden 🍏] [09:46:19] [WARNING] Dropping unknown keys when loading ColorTexture: {'is_black', 'requires_uv'}[0m
+[38;5;226m[Eden 🍏] [09:46:19] [WARNING] Dropping unknown keys when loading ColorTexture: {'is_black', 'requires_uv'}[0m
+[38;5;226m[Genesis] [09:46:19] [WARNING] Viewer option 'env_separate_rigid' is deprecated and will be removed in a future release. Please use 'split_envs' instead.[0m
+[38;5;159m[Genesis] [09:46:19] [INFO] Scene [38;5;121m[3m<e6ce9eb>[0m[38;5;159m created.[0m
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.49], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.6, 0.6, 0.02], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.036, 0.04, 0.042], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.035, 0.035, 0.035], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.04, 0.04], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.045, 0.045, 0.045], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.034, 0.035, 0.04], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.031, 0.038, 0.042], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.038, 0.045, 0.041], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.039, 0.033, 0.044], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.041, 0.037, 0.03], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.034, 0.043], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.043, 0.039, 0.035], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.041, 0.036], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.044, 0.039, 0.035], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `SurfaceOptions` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `Surface` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='color', input_value=[0.7, 0.7, 0.7, 0.7], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.036, 0.04, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.035, 0.035, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.04, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.045, 0.045, 0.045], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.034, 0.035, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.031, 0.038, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.038, 0.045, 0.041], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.039, 0.033, 0.044], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.041, 0.037, 0.03], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.034, 0.043], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.043, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.041, 0.036], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.044, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.625], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[0.7071067811865476, 0.0, 0.7071067811865475, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, int, int]` - serialized value may not be as expected [field_name='up', input_value=[0, 0, 1], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, int, int]` - serialized value may not be as expected [field_name='front', input_value=[1, 0, 0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='forward_vec', input_value=[1, 0, 0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+[38;5;159m[Genesis] [09:46:21] [INFO] Adding [38;5;121m<gs.engine.entities.RigidEntity>[0m[38;5;159m. idx: [38;5;121m0[0m[38;5;159m, uid: [38;5;121m[3m<3c29623>[0m[38;5;159m, morph: [38;5;121m<gs.morphs.Box>[0m[38;5;159m, material: [38;5;121m<gs.materials.Rigid>[0m[38;5;159m.[0m
+[38;5;159m[Genesis] [09:46:21] [INFO] Adding [38;5;121m<gs.engine.entities.RigidEntity>[0m[38;5;159m. idx: [38;5;121m1[0m[38;5;159m, uid: [38;5;121m[3m<6e5797b>[0m[38;5;159m, morph: [38;5;121m<gs.morphs.Box>[0m[38;5;159m, material: [38;5;121m<gs.materials.Rigid>[0m[38;5;159m.[0m
+[38;5;159m[Genesis] [09:46:21] [INFO] Adding [38;5;121m<gs.engine.entities.RigidEntity>[0m[38;5;159m. idx: [38;5;121m2[0m[38;5;159m, uid: [38;5;121m[3m<6ef9cca>[0m[38;5;159m, morph: [38;5;121m<gs.morphs.Box>[0m[38;5;159m, material: [38;5;121m<gs.materials.Rigid>[0m[38;5;159m.[0m
+[38;5;226m[Genesis] [09:46:25] [WARNING] Mesh is not watertight. Falling back to convex hull for estimating inertial properties.[0m
+[38;5;226m[Genesis] [09:46:25] [WARNING] Mesh is not watertight. Falling back to convex hull for estimating inertial properties.[0m
+[38;5;159m[Genesis] [09:46:25] [INFO] Adding [38;5;121m<gs.engine.entities.RigidEntity>[0m[38;5;159m. idx: [38;5;121m3[0m[38;5;159m, uid: [38;5;121m[3m<491b478>[0m[38;5;159m, morph: [38;5;121m<gs.morphs.MJCF(file='/workspace/tactile-genesis/dexterous-hands/src/assets/hands/allegro/xela_v4/right_hand_floating.xml')>[0m[38;5;159m, material: [38;5;121m<gs.materials.Rigid>[0m[38;5;159m.[0m
+[38;5;159m[Genesis] [09:46:25] [INFO] Building scene [38;5;121m[3m<e6ce9eb>[0m[38;5;159m...[0m
+[38;5;226m[Genesis] [09:46:26] [WARNING] Neutral robot position (qpos0) exceeds joint limits.[0m
+[38;5;226m[Genesis] [09:46:29] [WARNING] Filtered out geometry pairs causing self-collision for the neutral configuration (qpos0): (19, 21), (28, 31), (38, 41), (48, 51). Consider tuning Morph option 'decompose_robot_error_threshold' or specify dedicated collision meshes. This behavior can be disabled by setting Morph option 'enable_neutral_collision=True'.[0m
+[38;5;159m[Genesis] [09:46:34] [INFO] Compiling simulation kernels...[0m
+[38;5;159m[Genesis] [09:46:37] [INFO] Building visualizer...[0m
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='resampling_time_range', input_value=[1000000000.0, 1000000000.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='direction', input_value='hib', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='metric_mode', input_value='interval', input_type=str])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='env_spacing', input_value=[0.4, 0.4], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='background_color', input_value=[0.04, 0.08, 0.12], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.49], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.6, 0.6, 0.02], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `SurfaceOptions` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `Surface` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='color', input_value=[0.7, 0.7, 0.7, 0.7], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.036, 0.04, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.035, 0.035, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.04, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.045, 0.045, 0.045], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.034, 0.035, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.031, 0.038, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.038, 0.045, 0.041], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.039, 0.033, 0.044], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.041, 0.037, 0.03], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.034, 0.043], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.043, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.041, 0.036], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.044, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `SurfaceOptions` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `Surface` - serialized value may not be as expected [field_name='surface', input_value=[38;5;11m─────...[0m[38;5;121m: 0.0[0m
+, input_type=Default])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='color', input_value=[0.7, 0.7, 0.7, 0.7], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.036, 0.04, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.035, 0.035, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.04, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.045, 0.045, 0.045], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.042, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.034, 0.035, 0.04], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.031, 0.038, 0.042], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.038, 0.045, 0.041], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.039, 0.033, 0.044], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.041, 0.037, 0.03], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.042, 0.034, 0.043], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.043, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.04, 0.041, 0.036], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...;121m: 'BoxOptions'[0m
+, input_type=BoxOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='size', input_value=[0.044, 0.039, 0.035], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `EntityOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `PrimitiveOptions` - serialized value may not be as expected [field_name='grouped_entities', input_value=[38;5;11m─────...: 'CylinderOptions'[0m
+, input_type=CylinderOptions])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[1.0, 0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='default_root_pos', input_value=[0.0, 0.0, 0.625], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='default_root_quat', input_value=[0.7071067811865476, 0.0, 0.7071067811865475, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, int, int]` - serialized value may not be as expected [field_name='up', input_value=[0, 0, 1], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, int, int]` - serialized value may not be as expected [field_name='front', input_value=[1, 0, 0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='forward_vec', input_value=[1, 0, 0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='color', input_value=[0.7, 0.7, 0.7, 0.7], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, ...]` - serialized value may not be as expected [field_name='color', input_value=[1.0, 0.3, 0.2], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, ...]` - serialized value may not be as expected [field_name='color', input_value=[1.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='operation', input_value='add', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='operation', input_value='add', input_type=str])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='operation', input_value='add', input_type=str])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='interval', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='interval_range_s', input_value=[0.005, 0.005], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='reset', input_type=str])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='mode', input_value='interval', input_type=str])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='interval_range_s', input_value=[0.005, 0.005], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[3.205e-05, 0.01704531, 0.02846424]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[3.205e-05, 0.01704531, 0.02846424]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.2, 0.4, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='resolution', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, ...]` - serialized value may not be as expected [field_name='filter_link_idx', input_value=[], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='min_force', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='max_force', input_value=[10.0, 10.0, 10.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float, float]` - serialized value may not be as expected [field_name='debug_color', input_value=[1.0, 0.0, 1.0, 0.5], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[0.0, 0.0, 0.0]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[0.0, 0.0, 0.0]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.2, 0.4, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[0.04, 0.0, 0.07]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[0.04, 0.0, 0.07]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.2, 0.4, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.01024104, 0.02650436... 0.00499652, 0.004998]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.01024104, 0.02650436... 0.00499652, 0.004998]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.4, 0.7, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_contact_color', input_value=[1.0, 0.4, 0.4], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='dead_taxel_value_range', input_value=[0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, ...]` - serialized value may not be as expected [field_name='filter_link_idx', input_value=[], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.00536662, 0.01881664... 0.00481666, 0.004262]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.00536662, 0.01881664... 0.00481666, 0.004262]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.4, 0.7, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_contact_color', input_value=[1.0, 0.4, 0.4], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='dead_taxel_value_range', input_value=[0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, ...]` - serialized value may not be as expected [field_name='filter_link_idx', input_value=[], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[float, float, float], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.01183706, 0.0312421,....00380051, 0.01254132]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[tuple[tuple[float, float, float], ...], ...]` - serialized value may not be as expected [field_name='probe_local_pos', input_value=[[[0.01183706, 0.0312421,....00380051, 0.01254132]]], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_probe_color', input_value=[0.4, 0.7, 1.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='debug_contact_color', input_value=[1.0, 0.4, 0.4], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float]` - serialized value may not be as expected [field_name='dead_taxel_value_range', input_value=[0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='pos_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[float, float, float]` - serialized value may not be as expected [field_name='euler_offset', input_value=[0.0, 0.0, 0.0], input_type=list])
+  PydanticSerializationUnexpectedValue(Expected `tuple[int, ...]` - serialized value may not be as expected [field_name='filter_link_idx', input_value=[], input_type=list])
+  return self.__pydantic_serializer__.to_python(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='dataset_export_mode', input_value='export_all', input_type=str])
+  return self.__pydantic_serializer__.to_python(
+[38;5;159m[Eden 🍏] [09:46:39] [INFO] Environment Summary:
+Number of environments: 1
+Step time step: 0.025 s
+Simulation time step: 0.005 s
+Decimation: 5
+Managers:
+<ActionManager> contains 2 active terms.
++---------------------------------------------------------------+
+|                Active Action Terms (shape: 22)                |
++-------+---------------------+-----------+---------------------+
+| Index | Name                | Dimension |               Slice |
++-------+---------------------+-----------+---------------------+
+|   0   | dofs_pos_controller |        16 |  slice(0, 16, None) |
+|   1   | ee_controller       |         6 | slice(16, 22, None) |
++-------+---------------------+-----------+---------------------+
+<EventManager> contains 2 active terms.
++----------------------------------------+
+|  Active Event Terms in Mode: 'reset'   |
++-------+---------------------+----------+
+| Index | Name                | Priority |
++-------+---------------------+----------+
+|   0   | place_obj           |    0     |
+|   1   | obj_friction        |    0     |
+|   2   | obj_mass            |    0     |
+|   3   | dofs_randomize_bias |    0     |
+|   4   | pd_gains            |    0     |
+|   5   | motor_strength      |    0     |
+|   6   | deadband            |    0     |
+|   7   | kick                |    0     |
+|   8   | backlash            |    0     |
++-------+---------------------+----------+
++-----------------------------------------------------------+
+|           Active Event Terms in Mode: 'interval'          |
++-------+--------------+----------+-------------------------+
+| Index | Name         | Priority | Interval time range (s) |
++-------+--------------+----------+-------------------------+
+|   0   | torque_noise |    0     |      [0.005, 0.005]     |
++-------+--------------+----------+-------------------------+
+<ObservationManager> contains 7 groups.
++------------------------------------------------------------------------+
+| Active Observation Terms in Group: 'tactile_sensors' (shape: (11040,)) |
++-------------+------------------------------------+---------------------+
+|    Index    | Name                               |        Shape        |
++-------------+------------------------------------+---------------------+
+|      0      | tactile_sensors                    |       (11040,)      |
++-------------+------------------------------------+---------------------+
++-------------------------------------------------------------+
+| Active Observation Terms in Group: 'proprio' (shape: (54,)) |
++--------------+-----------------------------+----------------+
+|    Index     | Name                        |     Shape      |
++--------------+-----------------------------+----------------+
+|      0       | dofs_pos                    |     (16,)      |
+|      1       | dofs_vel                    |     (16,)      |
+|      2       | last_action                 |     (22,)      |
++--------------+-----------------------------+----------------+
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'goal' (shape: (3,)) |
++---------------+-----------------------+-----------------+
+|     Index     | Name                  |      Shape      |
++---------------+-----------------------+-----------------+
+|       0       | goal_pos              |       (3,)      |
++---------------+-----------------------+-----------------+
++------------------------------------------------------------------+
+| Active Observation Terms in Group: 'priv_proprio' (shape: (71,)) |
++-------------+-------------------------------------+--------------+
+|    Index    | Name                                |    Shape     |
++-------------+-------------------------------------+--------------+
+|      0      | dofs_pos                            |    (16,)     |
+|      1      | dofs_vel                            |    (16,)     |
+|      2      | last_action                         |    (22,)     |
+|      3      | contact                             |    (12,)     |
+|      4      | surface_distance                    |     (5,)     |
++-------------+-------------------------------------+--------------+
++-------------------------------------------------------------------+
+| Active Observation Terms in Group: 'priv_obj_state' (shape: (9,)) |
++-------------------+--------------------------+--------------------+
+|       Index       | Name                     |       Shape        |
++-------------------+--------------------------+--------------------+
+|         0         | obj_pos                  |        (3,)        |
+|         1         | obj_rot                  |        (6,)        |
++-------------------+--------------------------+--------------------+
++-------------------------------------------------------------------+
+| Active Observation Terms in Group: 'priv_obj_props' (shape: (4,)) |
++---------------+----------------------------------+----------------+
+|     Index     | Name                             |     Shape      |
++---------------+----------------------------------+----------------+
+|       0       | obj_size                         |      (2,)      |
+|       1       | obj_friction                     |      (1,)      |
+|       2       | obj_mass                         |      (1,)      |
++---------------+----------------------------------+----------------+
++----------------------------------------------------------------+
+| Active Observation Terms in Group: 'priv_shape' (shape: (63,)) |
++-------------+-----------------------------------+--------------+
+|    Index    | Name                              |    Shape     |
++-------------+-----------------------------------+--------------+
+|      0      | surface_vectors                   |    (63,)     |
++-------------+-----------------------------------+--------------+
+<MetricManager> contains 1 active terms.
++-------------------------------------------------------------------------------+
+|                                 Metrics Terms                                 |
++-------+-----------+-------------------+-----------+--------------+------------+
+| Index | Name      | Success Threshold | Direction | Success Mode | Cumulative |
++-------+-----------+-------------------+-----------+--------------+------------+
+|   0   | objective |        1.0        |    hib    |   interval   |   False    |
++-------+-----------+-------------------+-----------+--------------+------------+
+<CommandManager> contains 1 active terms.
++-------------------------------------+
+|         Active Command Terms        |
++-------+----------+------------------+
+| Index | Name     |       Type       |
++-------+----------+------------------+
+|   0   | goal_pos | UniformT3Command |
++-------+----------+------------------+
+<RewardManager> contains 10 active terms.
++---------------------------------------+
+|          Active Reward Terms          |
++-------+----------------------+--------+
+| Index | Name                 | Weight |
++-------+----------------------+--------+
+|   0   | approach             |   0.01 |
+|   1   | lift                 |    1.0 |
+|   2   | goal_progress        |   0.01 |
+|   3   | held                 |    1.0 |
+|   4   | dropped              |  -30.0 |
+|   5   | action_rate_penalty  |   -1.0 |
+|   6   | joint_vel_penalty    | -0.001 |
+|   7   | joint_limits_penalty |   -1.0 |
+|   8   | torque_penalty       |  -0.01 |
+|   9   | work_penalty         |  -0.05 |
++-------+----------------------+--------+
+<TerminationManager> contains 2 active terms.
++-------------------------------+
+|    Active Termination Terms   |
++-------+------------+----------+
+| Index | Name       | Time Out |
++-------+------------+----------+
+|   0   | time_out   |   True   |
+|   1   | obj_fallen |  False   |
++-------+------------+----------+
+[0m
+JOINTS: ['floating_wrist', 'index_roll', 'index_bend0', 'index_bend1', 'index_bend2', 'middle_roll', 'middle_bend0', 'middle_bend1', 'middle_bend2', 'ring_roll', 'ring_bend0', 'ring_bend1', 'ring_bend2', 'thumb_bend0', 'thumb_roll', 'thumb_bend1', 'thumb_bend2']
+HAND JOINTS (action order assumed): ['index_roll', 'index_bend0', 'index_bend1', 'index_bend2', 'middle_roll', 'middle_bend0', 'middle_bend1', 'middle_bend2', 'ring_roll', 'ring_bend0', 'ring_bend1', 'ring_bend2', 'thumb_bend0', 'thumb_roll', 'thumb_bend1', 'thumb_bend2'] 16
+RESET obj pos: [[-0.023771315813064575, 0.007727125659584999, 0.5210000276565552]]  robot pos: [[0.0, 0.0, 0.625]]
+ENTITIES: ['table', 'obj', 'vis_obj', 'robot'] link ranges robot/obj/table: (3, 46) (1, 2) (0, 1)
+   THUMB TRACE  step closure | taxel sum|F| max|F| n_loaded | GT obj self table | surf_dist
+      0  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1431
+      5  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1447
+     10  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1448
+     15  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1431
+     20  0.00 | 6.9359 0.5693  25 | 0.000 0.000 3.815 | 0.1415
+     25  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1421
+     30  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1432
+     35  0.00 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1442
+     40  0.02 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1446
+     45  0.10 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1439
+     50  0.18 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1409
+     55  0.27 | 6.6117 0.5656  20 | 0.000 0.000 3.952 | 0.1359
+     60  0.35 | 6.9960 0.5787  20 | 0.000 0.000 2.520 | 0.1315
+     65  0.43 | 0.0000 0.0000   0 | 0.000 0.000 0.000 | 0.1243
+     70  0.52 | 1.3171 0.6212   4 | 0.000 0.000 17.100 | 0.1105
+     75  0.60 | 5.3900 0.5892  20 | 0.000 0.000 2.689 | 0.1083
+     80  0.68 | 5.6502 0.5927  20 | 0.000 0.000 3.390 | 0.0987
+     85  0.77 | 4.8077 0.5928  10 | 0.000 0.000 3.208 | 0.0887
+     90  0.85 | 4.5722 0.5836  10 | 0.000 0.000 2.955 | 0.0775
+     95  0.93 | 4.3573 0.5760  10 | 0.000 0.000 3.827 | 0.0645
+    100  1.00 | 3.1038 0.5171   8 | 0.000 0.000 3.462 | 0.0500
+    101  1.00 | 3.7992 0.5043  10 | 0.000 0.000 3.422 | 0.0469
+    102  1.00 | 3.7852 0.4932  10 | 0.000 0.000 3.454 | 0.0437
+    103  1.00 | 3.7359 0.4850  10 | 0.000 0.000 3.076 | 0.0404
+    104  1.00 | 3.6970 0.4707  10 | 0.000 0.000 3.046 | 0.0370
+    105  1.00 | 3.6814 0.4622  10 | 0.000 0.000 3.125 | 0.0335
+    106  1.00 | 3.6151 0.4464  10 | 0.000 0.000 3.506 | 0.0301
+    107  1.00 | 3.5175 0.4282  10 | 0.000 0.000 3.290 | 0.0266
+    108  1.00 | 2.2988 0.4129   6 | 0.000 0.000 3.889 | 0.0232
+    109  1.00 | 1.9526 0.3937   5 | 0.000 0.000 3.024 | 0.0198
+    110  1.00 | 1.8874 0.3843   5 | 0.000 0.000 2.518 | 0.0165
+    111  1.00 | 1.8303 0.3696   5 | 0.000 0.000 2.665 | 0.0131
+    112  1.00 | 1.7910 0.3610   5 | 0.000 0.000 2.031 | 0.0096
+    113  1.00 | 1.7546 0.3555   5 | 0.000 0.000 2.096 | 0.0062
+    114  1.00 | 1.3892 0.3479   4 | 0.000 0.000 1.839 | 0.0028
+    115  1.00 | 1.7240 0.3459   5 | 0.000 0.000 1.613 | 0.0001
+    116  1.00 | 0.8546 0.3455   6 | 0.138 0.000 1.333 | 0.0006
+    117  1.00 | 0.2060 0.1354   3 | 0.116 0.000 0.000 | 0.0007
+    118  1.00 | 0.2115 0.1644   3 | 0.110 0.000 0.000 | 0.0006
+    119  1.00 | 0.0000 0.0000   0 | 0.108 0.000 0.000 | 0.0005
+TRIAL depth=0.010 sign=+1 | peak|F| per tip index=0.0000 middle=0.5665 ring=0.5513 thumb=0.6212 | any-sensor peak=1.2283 | min surf dist index=0.1111 middle=0.0901 ring=0.0973 thumb=0.0001 | obj dz=+0.0007 | saved scripted_d10mm_sp.npz
+      GT solver peak |F| by partner: obj=11.8014 table=17.1004 self=38.0672 other=0.0000 | GT tip<->obj: index=0.0000 middle=0.0000 ring=0.0000 thumb=0.1377
+SCRIPTED DONE
+[38;5;159m[Genesis] [09:47:10] [INFO] 💤 Exiting Genesis and caching compiled kernels...[0m

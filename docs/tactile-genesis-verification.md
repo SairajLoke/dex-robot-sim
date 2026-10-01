@@ -199,6 +199,35 @@ physics still rests on the 24/24 pytest suite and the hand-built single-fingerti
 fails on these files for that reason. Our scripts reduce over H with a median first (`reduce_history`).
 Earlier ad-hoc taxel counts that skipped this were inflated 5x and were recomputed.
 
+### Elastomer deformation, second pass: press test + rendered video
+
+Sensor types in the simulator (`conf/sensor/tactile_params.yaml`): `link_bool`, `link_force`, `agg_bool`,
+`agg_force`, `bool`, `depth`, `force`, `force_torque`, `proximity`, `elastomer`. Only `force_torque`
+and `elastomer` were exercised here. Privileged probes: `priv_contact_*` (GT hand-object force),
+`priv_surface_distance_*`, `obj_force`.
+
+`run_task_tactile_record.py --squeeze_steps 100 --video` runs hold (5 s) -> squeeze (all `bend` joints
+closed, accumulated target) -> hold -> release, once per sensor type with the same trajectory, and renders
+env 0. The squeeze is crude: the cube tumbles and is dropped 4 times (episode resets), so it is not a
+clean press. `make_press_video.py` composes the render with synchronized GT force, force_torque,
+elastomer and object-height traces: `docs/data/press_interaction.mp4`.
+
+Pooled elastomer data (press_el + rec_el + rec_el_r3, 3760 fingertip-steps,
+`scripts/plot_elastomer_dose_response.py`, `docs/data/elastomer_dose_response.png`):
+- Elastomer loading rises with GT contact force: fraction of steps with any displaced taxel 0.006
+  (<0.1 N), 0.09 (0.1-1 N), 0.17 (1-2 N), 0.34 (2-4 N); mean max displacement 0.003 -> 0.16 mm. The
+  >4 N bin (n=28) is lower, so this is not monotone at the top and has too few samples to say more.
+- Correlation is weak: max displacement vs GT 0.13, number of loaded taxels vs GT 0.28.
+- Against fingertip-object distance the trend is not monotone (loaded fraction 0.11 at <2 mm, 0.23 at
+  5-10 mm, 0.02 at >20 mm), unlike force_torque.
+- Displacement is spiky (isolated bursts up to about 8 mm lasting a few steps, see the video), with most
+  steps at exactly zero.
+- The v141r3 grasp cache (`rec_el_r3`) did not give a firmer grasp: max displacement 7 mm, hold-phase
+  loading near zero.
+
+So the elastomer sensor responds to contact in the direction expected, but on this pipeline it is sparse,
+noisy and only weakly correlated with the ground truth. The claim is still not verified quantitatively.
+
 ## Honest summary
 
 - **Sensor physics (pytest suite): fully verified, high confidence.** 24/24 passed with
@@ -209,7 +238,9 @@ Earlier ad-hoc taxel counts that skipped this were inflated 5x and were recomput
 - **Paper's own task pipeline (`in_fingers_rotate`): runs, with patches in `patches/`.** The
   force_torque taxel loading follows object proximity (verified), but its magnitude is not
   proportional to the ground-truth contact force (weak correlation).
-- **Elastomer deformation on the paper's pipeline: not verified.** Weak, rarely loaded, sub-mm.
+- **Elastomer deformation on the paper's pipeline: qualitative dose-response only.** Loading rises
+  with GT force (0.006 -> 0.34 across bins) but is sparse, spiky and weakly correlated (0.13-0.28).
+  Not verified quantitatively.
 - **Not attempted:** 16,384-env / 600k steps/s throughput; FOTS / HydroShear RMSE comparison.
-- **Next step:** a firmer grasp (the v141r3 grasp cache, or increased closure) so the elastomer
-  actually indents, and time-alignment of taxel readings with `obj_force`.
+- **Next step:** a clean controlled press (the squeeze here tumbles the cube), and time-alignment of
+  taxel readings with `obj_force`.

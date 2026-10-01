@@ -1,0 +1,1 @@
+n=3760  corr(max disp, GT)=0.13  corr(n loaded, GT)=0.28
