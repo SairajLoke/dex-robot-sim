@@ -11,7 +11,10 @@ import torch
 
 sys.path.insert(0, "src")
 import genesis as gs
+import eden as en
 from eden.envs.wrappers.rsl_rl_env import RslRlVecEnvWrapper
+
+en.init(backend=gs.gpu, log_root_path="logs/tactile_probe")
 
 from registry import get_task_config
 from tactile_record import TactileEpisodeRecorder

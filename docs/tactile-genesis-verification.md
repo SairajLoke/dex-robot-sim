@@ -131,19 +131,48 @@ Given the manual calibration above was fighting self-collision and placement iss
 paper's own task/grasp-sampling code (`conf/sample_grasps/*.yaml`, the `grasp_lift` task) already
 solves, I tried constructing their actual Eden task env directly
 (`scripts/run_grasp_lift_probe.py`, via `registry.get_task_config` + `RslRlVecEnvWrapper`) instead
-of continuing to hand-roll geometry.
+of continuing to hand-roll geometry. Note this never trains or runs a policy — `env.reset()` alone
+is what gives a correctly-placed, paper-sampled grasp pose for free; stepping uses all-zero
+actions purely to read sensor output over time.
 
-This hit a different, more fundamental problem: `src/shared_terms.py` — imported by every task
-config in the repo, including `grasp_lift` and `in_fingers_rotate` — does
-`from eden.managers.terms.utils import soft_dof_pos_violation`, and that module does not exist
-anywhere in the vendored `Eden/` snapshot (confirmed by searching the whole tree for both the
-module and the function name). This means **task/environment construction is currently broken for
-every task in this repo checkout**, not just the ones I tried — `main.py` itself would hit the
-same import error for any `--task`, in both train and play modes. Full traceback in
-`docs/grasp_lift_pipeline_bug.log`. This looks like an artifact of the vendoring/stripping process
-described in the top-level README ("Eden... stripped to the modules this project imports") having
-dropped a module `shared_terms.py` still needs. Worth flagging upstream if you're in touch with
-the authors, since it blocks reproducing the actual paper tasks, not just this follow-up demo.
+**This repo's task/environment pipeline doesn't build as checked out, for any task** — not
+specific to `grasp_lift`. Reconstructing just far enough to see that is itself the finding here.
+Five issues, each one surfaced only after fixing the last, documented in full in
+[patches/README.md](../patches/README.md):
+
+1. `src/shared_terms.py` (imported by every task config) imports
+   `eden.managers.terms.utils.soft_dof_pos_violation`, which doesn't exist anywhere in the
+   vendored `Eden/` snapshot. Reconstructed from its one call site (a soft joint-limit penalty).
+2. The same import line also needs 4 quaternion helpers from `eden.utils.geom`
+   (`axis_angle_from_quat`, `inv_quat`, `quat_error_magnitude`, `quat_mul`) — none exist in the
+   vendored copy. Reconstructed from the (w, x, y, z) convention already used elsewhere in that
+   file and Genesis's own equivalent numpy implementations; sanity-checked standalone against
+   known 90°/45° rotations before use.
+3. A standalone script needs its own `en.init(...)` call before building any config (not a repo
+   bug — `main.py` does this and I initially didn't).
+4. This pinned Genesis build (v1.4.1) wants `friction_cone`/`contact_resolution` nested under
+   `Scene(rigid_options=RigidOptions(...))`, not as flat kwargs the way this repo's own
+   `src/registry.py` sets them.
+5. `eden/envs/base.py` passes the deprecated `max_FPS=` kwarg to `ViewerOptions`, which this
+   Genesis build hard-errors on (not just warns) once its own internal option-propagation also
+   touches `refresh_rate`.
+
+**Where it stopped:** one layer deeper, `genesis/engine/solvers/base_solver.py` computes
+`sim.dt / options.dt if "dt" in options.model_fields_set else sim.substeps`. By this point the
+`RigidOptions` instance from fix #4 has `dt=None` but is somehow *also* showing up in
+`model_fields_set` — a `model_copy_from`/`model_construct` interaction inside Genesis's own
+pydantic Options framework, not a renameable kwarg or a reconstructable missing function. That's
+genuinely framework-internal, stateful behavior I can't safely patch without a much deeper dive
+into how Genesis's Options classes propagate fields between each other, so this is where the
+reconstruction effort stopped, per the standing instruction not to guess blindly at that depth.
+
+Full tracebacks for each stage in `docs/grasp_lift_pipeline_bug.log` (original failure) — the
+later stages aren't separately saved but are reproducible by applying `patches/` and re-running
+`scripts/run_grasp_lift_probe.py`. This looks like an artifact of the vendoring/stripping process
+described in the top-level README ("Eden... stripped to the modules this project imports")
+combined with the vendored Eden snapshot predating some Genesis v1.4.1 API changes — worth
+flagging upstream if you're in touch with the authors, since it blocks reproducing *any* of the
+paper's actual tasks, not just this follow-up demo.
 
 ## Honest summary
 
@@ -153,5 +182,9 @@ the authors, since it blocks reproducing the actual paper tasks, not just this f
   asset shows correct, physically consistent force/torque from real contact with a real object,
   using the real 368-taxel layout. Full 3-finger simultaneous contact with nonzero deformation
   wasn't reached in the time available.
-- **Paper's own task pipeline: blocked**, by an apparent packaging bug unrelated to the sensing
-  claims themselves.
+- **Paper's own task pipeline: 5 bugs found and fixed, stopped at a 6th.** None of the 5 fixed
+  issues touch the sensing/physics claims themselves — they're all plumbing (missing functions,
+  deprecated kwargs, option-construction order) between the vendored Eden and the vendored
+  Genesis. The 6th is in Genesis's own Options/pydantic internals and would need real
+  investigation, not a quick patch, to resolve safely. All 5 fixes are saved under `patches/` so
+  a future attempt starts past this point rather than re-discovering it.
