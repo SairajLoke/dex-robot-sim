@@ -293,8 +293,20 @@ Results:
   600k steps/s on an RTX 5090 in a different scene, so the two are not comparable. Step time is dominated by the env
   managers (0.414 s per env.step vs 0.042 s raw scene.step at 1,024 envs). Elastomer sensors run out of memory at
   1,024 envs (256 envs: 362 samples/s). Raw numbers: `docs/data/throughput_3060ti.txt`.
-- **FOTS / HydroShear comparison: blocked, not run.** The authors' `scripts/run_fots_compare.sh` cannot run as shipped:
-  (1) `DILATION_REG` is never defined (`set -u` abort), and `dilation_reg` is not an accepted `--sweep-x` axis in
-  `fots_marker_compare.py`; (2) the script builds `ElastomerTaxel(elastomer_boundary=...)`, an option that does not
-  exist in the pinned Genesis v1.4.1 (`Unrecognized attribute 'elastomer_boundary'`). Fix (1) is mechanical, but (2)
-  needs either a newer Genesis or `--no-boundary`, which changes the sensor being compared, so it was left alone.
+- **FOTS / HydroShear comparison: ran, with a modified sensor config.** Best-fit marker RMSE against the real GelSight
+  frames (px, lower is better; `docs/data/fots_compare/grid_sweep_best.png`, log `docs/logs/fots_compare.log`):
+
+  | model | dilate RMSE (rel) | shear RMSE (rel) |
+  |---|---|---|
+  | Ours (ElastomerTaxel) | 0.66 (0.35) | 1.02 (0.19) |
+  | HydroShear | 0.76 (0.40) | 1.48 (0.28) |
+  | FOTS | 0.98 (0.52) | 1.50 (0.29) |
+
+  Ours is lowest on both motions, so the ordering matches the paper's claim. Caveats: (1) it is one real frame per
+  motion with hand-set geometry, and the RMSEs are all about 1 px, so this is weak evidence; (2) each model has a free
+  per-motion scale fitted analytically after the sweep (ours dilate scale 0.067, FOTS 0.0002, HydroShear 5.2), so the
+  comparison is of shape, not absolute magnitude; (3) the authors' script could not run as shipped, see below.
+  Deviations (`patches/fots_compare.diff`, `scripts/run_fots_compare_patched.sh`): `DILATION_REG` is undefined and
+  `dilation_reg` is not a valid sweep axis, so ours stage 1 sweeps compressibility only (dilation_reg at its auto
+  default); the pinned Genesis v1.4.1 has no `ElastomerTaxel.elastomer_boundary`, so everything runs with
+  `--no-boundary` (the paper's no-flux boundary wall is NOT included in "Ours" here) and the kwarg is omitted.

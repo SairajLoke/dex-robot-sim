@@ -1,0 +1,40 @@
+--- /tmp/fots_marker_compare.orig.py	2026-10-01 13:16:32.596395663 +0000
++++ scripts/fots_marker_compare.py	2026-10-01 13:16:32.616394813 +0000
+@@ -427,7 +427,7 @@
+             shear_scale=sp["shear_scale"],
+             normal_exponent=sp["normal_exponent"],
+             compressibility=sp["compressibility"],
+-            elastomer_boundary=boundary,
++            **({"elastomer_boundary": boundary} if boundary is not None else {}),
+             elastomer_thickness=elast_thick_m,
+             n_sample_points=1000,
+             draw_debug=vis,
+--- scripts/run_fots_compare.sh	2026-10-01 06:55:26.005894643 +0000
++++ scripts/run_fots_compare_patched.sh	2026-10-01 13:18:27.295523679 +0000
+@@ -25,7 +25,7 @@
+ FORCE=$([ "${FORCE:-0}" = 1 ] && echo "--force-markers" || echo "")
+ 
+ # ----- geometry + motion (shared) -------------------------------------------------------------
+-COMMON="--ball-radius 3.0 --depth 1.5 --depth-query sdf --control-mode position"
++COMMON="--no-boundary --ball-radius 3.0 --depth 1.5 --depth-query sdf --control-mode position"
+ DILATE="--frame 0 --motion dilate --center-px 136 124"
+ SHEAR="--frame 1 --motion shear --shear-start 136 118 0 --shear-stop 133 135 -5"
+ 
+@@ -55,13 +55,12 @@
+ # ===== OURS (ElastomerTaxel) ================================================================
+ echo "== [1/3] OURS dilate sweep: dilation_reg x compressibility  (thickness=${OURS_THICKNESS}mm, lambda_d=$LAMBDA_D fixed) =="
+ T=$(swp $COMMON $DILATE --marker-model elastomer --lambda-d "$LAMBDA_D" --elastomer-thickness "$OURS_THICKNESS" --sweep \
+-    --sweep-x dilation_reg    --sweep-x-values "$DILATION_REG" \
+-    --sweep-y compressibility --sweep-y-values "$COMPRESSIBILITY" --out "$OUT/sweep_dilate.png")
++    --sweep-x compressibility --sweep-x-values "$COMPRESSIBILITY" --out "$OUT/sweep_dilate.png")
+ show "$T"
+-DREG=$(best_param "$T" dilation_reg); COMPRESS=$(best_param "$T" compressibility)
++COMPRESS=$(best_param "$T" compressibility)
+ DSCALE=$(echo "$T" | grep "BEST:" | grep -oE "'dilate': $FLOAT" | grep -oE "$FLOAT$")
+-DILATION="--dilation-reg $DREG --compressibility $COMPRESS --elastomer-thickness $OURS_THICKNESS --lambda-d $LAMBDA_D"
+-echo ">> ours dilation calibrated: dilation_reg=$DREG compressibility=$COMPRESS thickness=${OURS_THICKNESS}mm dilate_scale=$DSCALE"
++DILATION="--compressibility $COMPRESS --elastomer-thickness $OURS_THICKNESS --lambda-d $LAMBDA_D"
++echo ">> ours dilation calibrated: compressibility=$COMPRESS thickness=${OURS_THICKNESS}mm dilate_scale=$DSCALE"
+ 
+ echo "== OURS shear sweep: lambda_s x shear_scale  (dilation fixed from above) =="
+ show "$(swp $COMMON $SHEAR --marker-model elastomer $DILATION --dilate-scale "$DSCALE" --sweep \
