@@ -1,0 +1,45 @@
+diff --git a/Eden/eden/managers/terms/events/domain_rand.py b/Eden/eden/managers/terms/events/domain_rand.py
+index c5c64bf..586df59 100644
+--- a/Eden/eden/managers/terms/events/domain_rand.py
++++ b/Eden/eden/managers/terms/events/domain_rand.py
+@@ -103,6 +103,12 @@ class PushByVelocity(EventTerm):
+         )
+ 
+ 
++_REF_FRAMES = {
++    "link_origin": gs.link_ref_frame.link_origin,
++    "link_com": gs.link_ref_frame.link_COM,
++    "root_com": gs.link_ref_frame.root_COM,
++}
++
+ @EVENT_TERM_REGISTRY.register()
+ class ApplyExternalForce(EventTerm):
+     """
+@@ -196,11 +202,11 @@ class ApplyExternalForce(EventTerm):
+         if self.prob < 1.0:
+             mask = torch.rand((self._env.num_envs,), device=self._env.device) < self.prob
+             force[~mask[envs_idx]] = 0.0
+-        self._env.rigid_solver.apply_links_external_force(
++        self._env.rigid_solver.apply_links_external_wrench(
+             force=force,
+             links_idx=self.links_idx,
+             envs_idx=envs_idx,
+-            ref=self.ref,
++            ref=_REF_FRAMES[self.ref],
+             local=self.local,
+         )
+ 
+@@ -292,11 +298,11 @@ class ApplyExternalTorque(EventTerm):
+         if self.prob < 1.0:
+             mask = torch.rand((self._env.num_envs,), device=self._env.device) < self.prob
+             torque[~mask[envs_idx]] = 0.0
+-        self._env.rigid_solver.apply_links_external_torque(
++        self._env.rigid_solver.apply_links_external_wrench(
+             torque=torque,
+             links_idx=self.links_idx,
+             envs_idx=envs_idx,
+-            ref=self.ref,
++            ref=_REF_FRAMES[self.ref],
+             local=self.local,
+         )
+ 

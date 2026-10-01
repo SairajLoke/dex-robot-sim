@@ -71,10 +71,30 @@ not needed, and the shim raises for unbatched `num_envs > 1`.
 
 Called by the env but only `get_term` exists; added `get_term_dones = get_term`.
 
+## 8. `ReferenceSource.ACCUMULATE` (`constants.py`, `actions/joint_actions.py`) — `accumulate_reference.diff`
+
+`in_fingers_rotate` configures its `ExplicitPDController` with `reference_source=ACCUMULATE`, which
+does not exist in the vendored Eden snapshot (`AttributeError`). Reconstructed from the authors' tests
+and comments: a persistent per-env target, `target_t = clamp(target_{t-1} + action * scale)`, clamped
+to the joint range minus a 5% margin each side, reset to the default pose on episode reset. This is a
+reconstruction, not the authors' code; a zero action holds the pose, which is all the sensor recordings need.
+
+## 9. External force / torque API (`events/domain_rand.py`) — `external_wrench.diff`
+
+`ApplyExternalForce` / `ApplyExternalTorque` call `rigid_solver.apply_links_external_force/torque`,
+which v1.4.1 replaced with `apply_links_external_wrench(force=, torque=, ...)`. The `ref` string is
+mapped to `gs.link_ref_frame`.
+
+## 10. Grasp cache symlink (`scripts/apply_patches.sh`)
+
+`LoadGraspPose` skips loading silently if `in_fingers_rotate_allegro_mixed_grasps_128.pt` is missing, so
+the hand would start open and nothing touches the object. The script symlinks it to the shipped
+`..._v141r2_grasps_32.pt`.
+
 ## Applying
 
 `scripts/apply_patches.sh` applies all of the above idempotently (`utils_geom.diff`, `envs_base.diff`,
-`entities_rigid.diff`, `termination_alias.diff`, plus copying `managers_terms_utils.py`). The manual
+`entities_rigid.diff`, `termination_alias.diff`, `accumulate_reference.diff`, `external_wrench.diff`, the grasp-cache symlink, plus copying `managers_terms_utils.py`). The manual
 steps listed under fixes 1-2 are superseded by it.
 
 ## Where this stopped

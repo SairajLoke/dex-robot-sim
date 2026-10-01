@@ -169,6 +169,36 @@ Logs: `docs/scripted_trace_10mm.log` (per-step thumb trace).
 16,384 envs / 600k steps/s throughput and the FOTS/HydroShear RMSE comparison were not attempted
 (8 GB GPU, no datasets).
 
+## Follow-up: `in_fingers_rotate` (starts in contact), no training
+
+`scripts/run_task_tactile_record.py` builds the paper's `in_fingers_rotate` / Allegro env, which loads a
+sampled grasp on reset so every fingertip starts touching the object. Phase 1 (5 s) holds with a zero
+action; phase 2 (10 s) adds a sinusoidal wiggle on all 16 finger targets. 4 envs, env 0 recorded, 300
+steps, with `actual-hand/force_torque` (`rec_ft`) and `actual-hand/elastomer` (`rec_el`). Sensors track
+the object only (`track_link_idx="obj"`). Extra patches needed: ACCUMULATE reference source, external
+wrench API, grasp-cache symlink (`patches/README.md` items 8-10). The object is dropped 5 times in the
+10 s wiggle (episode resets, red dotted lines in the plots).
+
+Outputs in `docs/data/`: `rec_{ft,el}.npz` (recorder), `rec_{ft,el}_extra.npz` (joints, object pose,
+`priv_*` ground-truth probes, reward, done), `rec_{ft,el}_summary.png`, `rec_{ft,el}_tips.mp4`
+(fingertip taxels, 3D). Scripts: `plot_task_tactile_record.py`, `animate_task_tactile.py`.
+
+**force_torque results**
+- Palm and mid-finger pads read exactly 0, so object-only tracking works.
+- Fingertip loading follows fingertip-to-object surface distance monotonically: any-taxel-loaded
+  fraction 0.87 at < 2 mm vs 0.11 at >= 20 mm; mean taxel sum |F| 0.92 vs 0.10.
+- Magnitude does NOT follow the ground-truth hand-object contact force (`priv_contact_*`). Time
+  correlation of taxel sum |F| with GT |F|: index 0.41, middle 0.57, ring 0.005, thumb 0.25.
+
+**elastomer results (deformation): not verified.** Loaded in only about 12% of near-contact steps, with
+sub-millimetre displacement and no monotonic trend with distance. The grasp is light. Deformation
+physics still rests on the 24/24 pytest suite and the hand-built single-fingertip test above.
+
+**Recorder quirk.** Sensors keep `history_length=5` sub-steps, and `TactileEpisodeRecorder.save` writes
+`(T, H*N, 3)` history-major while `__pos` is `(T, N, 3)`. The authors' `scripts/animate_tactile.py`
+fails on these files for that reason. Our scripts reduce over H with a median first (`reduce_history`).
+Earlier ad-hoc taxel counts that skipped this were inflated 5x and were recomputed.
+
 ## Honest summary
 
 - **Sensor physics (pytest suite): fully verified, high confidence.** 24/24 passed with
@@ -176,9 +206,10 @@ Logs: `docs/scripted_trace_10mm.log` (per-step thumb trace).
 - **Real hand on a real object, hand-built scene: partially verified.** One fingertip of the paper's
   Allegro asset shows consistent force/torque from real object contact with the real 368-taxel
   layout. No 3-finger contact, no deformation readings.
-- **Paper's own task pipeline: builds and runs** after the plumbing patches in `patches/` (all
-  mechanical; none touch the sensing/physics). **Tactile readings on it are not yet verified**
-  because the scripted drive does not produce clean object contact (see above).
-- **Next step to close this:** use a task that starts in contact (`in_hand_repose` or
-  `in_fingers_rotate` with the grasp cache in `conf/sample_grasps/*.yaml`) so every fingertip loads
-  against the object from step 0, and compare against hand-self/table baseline.
+- **Paper's own task pipeline (`in_fingers_rotate`): runs, with patches in `patches/`.** The
+  force_torque taxel loading follows object proximity (verified), but its magnitude is not
+  proportional to the ground-truth contact force (weak correlation).
+- **Elastomer deformation on the paper's pipeline: not verified.** Weak, rarely loaded, sub-mm.
+- **Not attempted:** 16,384-env / 600k steps/s throughput; FOTS / HydroShear RMSE comparison.
+- **Next step:** a firmer grasp (the v141r3 grasp cache, or increased closure) so the elastomer
+  actually indents, and time-alignment of taxel readings with `obj_force`.

@@ -1,0 +1,81 @@
+diff --git a/Eden/eden/constants.py b/Eden/eden/constants.py
+index 8236b6f..1e3ca2e 100644
+--- a/Eden/eden/constants.py
++++ b/Eden/eden/constants.py
+@@ -75,11 +75,14 @@ class ReferenceSource(StrEnum):
+         each control step (``entity.get_dofs_pos(...)``); the action is then a
+         delta on top of the previous step's DOF position. Constant across
+         decimation substeps.
++    ACCUMULATE: a persistent per-env target, ``target_t = clamp(target_{t-1} + raw * scale)``,
++        clamped to the 90% soft joint range and reset to ``_default_target`` each episode.
+     """
+ 
+     ZERO = "zero"
+     DEFAULT = "default"
+     DELTA = "delta"
++    ACCUMULATE = "accumulate"
+ 
+ 
+ class DatasetExportMode(StrEnum):
+diff --git a/Eden/eden/managers/terms/actions/joint_actions.py b/Eden/eden/managers/terms/actions/joint_actions.py
+index 6eb5935..9b7376d 100644
+--- a/Eden/eden/managers/terms/actions/joint_actions.py
++++ b/Eden/eden/managers/terms/actions/joint_actions.py
+@@ -75,6 +75,10 @@ class _JointPDControllerBase(ActionTerm):
+         self._scale: float | torch.Tensor | None = None
+         self._offset: torch.Tensor | None = None
+         self._dofs_pos_offset: torch.Tensor | None = None
++        self._accumulated_target: torch.Tensor | None = None
++        self._default_target: torch.Tensor | None = None
++        self._target_lower: torch.Tensor | None = None
++        self._target_upper: torch.Tensor | None = None
+         self._modifier: ActionModifier | None = None
+         if self.modifier is not None:
+             self._modifier = ACTION_MODIFIER_REGISTRY.get(self.modifier.name)(env=env, options=self.modifier)
+@@ -86,6 +90,19 @@ class _JointPDControllerBase(ActionTerm):
+         if self.reference_source == ReferenceSource.DELTA:
+             self._dofs_pos_offset = torch.zeros(self.num_envs, self._n_dofs, device=self.device)
+ 
++        if self.reference_source == ReferenceSource.ACCUMULATE:
++            if self._has_nonzero_offset():
++                raise ValueError("reference_source='accumulate' requires a zero `offset`.")
++            lower, upper = self.entity.get_dofs_limit(dofs_idx_local=self.dofs_idx_local)
++            lower, upper = lower.reshape(-1, self._n_dofs), upper.reshape(-1, self._n_dofs)
++            margin = 0.05 * (upper - lower)
++            shape = (self.num_envs, self._n_dofs)
++            self._target_lower = (lower + margin).expand(shape).clone()
++            self._target_upper = (upper - margin).expand(shape).clone()
++            dofs_idx = [self.entity.dofs_name_map[name] for name in self.dofs_name]
++            self._default_target = self.entity.default_dofs_pos[:, dofs_idx].expand(shape).clone()
++            self._accumulated_target = self._default_target.clone()
++
+         # Build action modifier if configured
+         if self._modifier is not None:
+             self._modifier.build(
+@@ -181,7 +198,15 @@ class _JointPDControllerBase(ActionTerm):
+         if self._dofs_pos_offset is not None:
+             # Capture once per env step; constant across decimation substeps.
+             self._dofs_pos_offset[:] = self.entity.get_dofs_pos(dofs_idx_local=self.dofs_idx_local)
+-        self._processed_action = self._compute_pos_target(self._raw_action)
++        if self._accumulated_target is not None:
++            self._accumulated_target.copy_(
++                (self._accumulated_target + self._raw_action * self._scale).clamp(
++                    self._target_lower, self._target_upper
++                )
++            )
++            self._processed_action = self._accumulated_target.clone()
++        else:
++            self._processed_action = self._compute_pos_target(self._raw_action)
+ 
+         # Apply modifier to processed action (e.g., delay).
+         # The target is already absolute (delta + dofs_pos), so state-dependent
+@@ -197,6 +222,9 @@ class _JointPDControllerBase(ActionTerm):
+         if self._dofs_pos_offset is not None:
+             # Overwritten in the next compute(); zeroed here for parity with _raw_action.
+             self._dofs_pos_offset[envs_idx] = 0.0
++        if self._accumulated_target is not None:
++            self._accumulated_target[envs_idx] = self._default_target[envs_idx]
++            self._processed_action[envs_idx] = self._accumulated_target[envs_idx]
+ 
+         if self._modifier is not None:
+             self._modifier.reset(envs_idx)
