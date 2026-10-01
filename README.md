@@ -9,6 +9,7 @@ simulator ([arXiv:2606.22332](https://arxiv.org/pdf/2606.22332); anonymous ICRA 
 `anonymous.4open.science/r/icra-tactile-genesis`, de-anonymized at
 [`neuroagents-lab/tactile-genesis`](https://github.com/neuroagents-lab/tactile-genesis)):
 
+- [CAREFUL_SETUP.md](CAREFUL_SETUP.md) — minimal setup steps and the 9 bugs hit, 2 lines each
 - [docs/tactile-genesis-setup.md](docs/tactile-genesis-setup.md) — reproducible setup on a GPU box
   (also `scripts/setup_remote_env.sh`)
 - [docs/tactile-genesis-verification.md](docs/tactile-genesis-verification.md) — verification that
