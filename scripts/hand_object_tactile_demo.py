@@ -31,18 +31,15 @@ DT = 0.01
 # each joint's MJCF ctrlrange (see right_hand.xml), picked to curl the fingers toward the
 # grasp_center sphere without self-colliding.
 CLOSE_TARGETS = {
-    "index_bend0": 0.95,
-    "index_bend1": 1.0,
-    "index_bend2": 0.9,
-    "middle_bend0": 0.95,
-    "middle_bend1": 1.0,
-    "middle_bend2": 0.9,
-    "ring_bend0": 0.95,
-    "ring_bend1": 1.0,
-    "ring_bend2": 0.9,
-    "thumb_roll": 0.55,
-    "thumb_bend1": 1.0,
-    "thumb_bend2": 0.9,
+    "index_bend0": 0.6,
+    "index_bend1": 0.6,
+    "index_bend2": 0.6,
+    "middle_bend0": 0.6,
+    "middle_bend1": 0.6,
+    "middle_bend2": 0.6,
+    "ring_bend0": 0.6,
+    "ring_bend1": 0.6,
+    "ring_bend2": 0.6,
 }
 
 
@@ -75,17 +72,30 @@ def main():
         gs.morphs.MJCF(file=hand_spec.file, pos=(0.0, 0.0, 0.2)),
     )
 
-    # grasp_center is defined in the palm-link local frame; with the hand at identity
-    # orientation this is also the offset from the hand's base position.
-    gx, gy, gz = hand_spec.metadata.grasp_center
-    hx, hy, hz = 0.0, 0.0, 0.2
-    object_pos = (hx + gx, hy + gy, hz + gz)
-    SPHERE_RADIUS = 0.028
+    # Picked from an FK sweep (scripts/calibrate_allegro.py) of where index/middle/ring
+    # fingertips actually land as their bend joints close -- the grasp_center metadata
+    # assumes Eden's own entity-placement step, which this raw-Genesis script skips, so
+    # it does not line up with the fingertips here.
+    # Picked from scripts/calibrate_taxels.py at bend=0.6 (a moderate curl that avoids
+    # the self-collision stall seen at higher bend targets): exact world position of the
+    # fingertip TAXEL SURFACE (link origin + per-probe local offset, transformed by the
+    # link's actual quaternion), not just the link origin.
+    object_pos = (0.0974, 0.0, 0.2665)
+    SPHERE_RADIUS = 0.075
+    # Fixed in place: this demo isolates sensor physics (does a real hand pressing a
+    # real object read correct contact force/torque/deformation), not grasp dynamics --
+    # a free sphere gets knocked out of index/ring's reach once middle contacts first.
     obj = scene.add_entity(
-        gs.morphs.Sphere(radius=SPHERE_RADIUS, pos=object_pos, fixed=False),
+        gs.morphs.Sphere(radius=SPHERE_RADIUS, pos=object_pos, fixed=True),
     )
 
     fingertip_probes = load_fingertip_probes()
+    # KinematicTaxel has no track_link_idx (unlike ElastomerTaxel) -- without excluding
+    # the hand's OWN links, it also registers self-collision between curling fingers and
+    # the palm, which is what was happening here (force readings uncorrelated with actual
+    # distance to the object; discovered because ElastomerTaxel, correctly restricted via
+    # track_link_idx to the object, stayed at zero throughout).
+    hand_self_links = tuple(range(hand.link_start, hand.link_start + hand.n_links))
     kin_sensors, elast_sensors = {}, {}
     for link_name in FINGERTIPS:
         pos, normal, radius = fingertip_probes[link_name]
@@ -100,6 +110,7 @@ def main():
                 normal_damping=1.0,
                 shear_scalar=4.0,
                 twist_scalar=1.0,
+                filter_link_idx=hand_self_links,
             )
         )
         elast_sensors[link_name] = scene.add_sensor(
@@ -175,6 +186,12 @@ def main():
         scene.step()
         if i % 4 == 0:
             record(N_SETTLE + N_CLOSE + i, "hold")
+
+    print("DEBUG final dofs:", dict(zip(dofs_name, hand.get_dofs_position(dofs_idx).cpu().numpy().tolist())))
+    for ln in FINGERTIPS:
+        link = hand.get_link(ln)
+        print("DEBUG final pos", ln, hand.get_links_pos(link.idx_local).cpu().numpy())
+    print("DEBUG object_pos recap:", object_pos, "radius", SPHERE_RADIUS)
 
     out_csv = "hand_object_tactile_demo.csv"
     with open(out_csv, "w", newline="") as f:

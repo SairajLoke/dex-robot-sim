@@ -1,0 +1,36 @@
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/workspace/tactile-genesis/dexterous-hands/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/workspace/tactile-genesis/dexterous-hands/scripts/run_grasp_lift_probe.py", line 24, in <module>
+    config = get_task_config(
+             ^^^^^^^^^^^^^^^^
+  File "/workspace/tactile-genesis/dexterous-hands/src/registry.py", line 152, in get_task_config
+    config = TASK_REGISTRY.build(task_name, **(modifiers or {}))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/tactile-genesis/Eden/eden/tasks/registry.py", line 420, in build
+    cls = self.get(name)
+          ^^^^^^^^^^^^^^
+  File "/workspace/tactile-genesis/Eden/eden/tasks/registry.py", line 378, in get
+    importlib.import_module(module_path)
+  File "/venv/main/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/workspace/tactile-genesis/dexterous-hands/src/tasks/grasp_lift/config.py", line 41, in <module>
+    import lift_teacher  # noqa: F401 — register versioned teacher controller and observations
+    ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/tactile-genesis/dexterous-hands/src/lift_teacher.py", line 6, in <module>
+    from shared_terms import RootPoseController
+  File "/workspace/tactile-genesis/dexterous-hands/src/shared_terms.py", line 37, in <module>
+    from eden.managers.terms.utils import soft_dof_pos_violation
+ModuleNotFoundError: No module named 'eden.managers.terms.utils'
+

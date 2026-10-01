@@ -70,3 +70,88 @@ unit tests.
 ## Raw log
 
 Full pytest output: `docs/tactile-genesis-test-tactile.log` (this directory).
+
+## Follow-up: a real Allegro hand pressing a real object
+
+The pytest suite above exercises the sensors against synthetic boxes/spheres directly, not
+through the paper's actual dexterous-hand asset. To check the claims against a real robot, not
+just the unit tests, I built `scripts/hand_object_tactile_demo.py`: load the paper's own Allegro
+hand asset (`xela_v4/right_hand.xml`, 16 DOF) with its real 368-taxel fingertip layout
+(`src/assets/sensors/allegro/actual/probes_368_hand_allegro.json`), press index/middle/ring
+fingertips onto a fixed sphere via position-controlled joints, and read live `KinematicTaxel`
+(force/torque) and `ElastomerTaxel` (deformation) output.
+
+**This took far more iteration than the unit tests, for reasons worth recording:**
+
+1. **Hand placement.** The `AllegroHand` metadata's `grasp_center` offset assumes Eden's own
+   entity-placement step, which a raw `gs.morphs.MJCF(...)` load (used here to stay lightweight)
+   doesn't apply — so a naive `hand_pos + grasp_center` object placement put the sphere nowhere
+   near the open-pose fingertips. Fixed by an FK sweep (`scripts/calibrate_allegro.py`) of where
+   fingertips actually land as bend joints close.
+
+2. **Taxel surface vs. link origin.** The taxel probes live ~2cm forward/down of each fingertip
+   link's own origin (the offset baked into `probe_local_pos`). Placing the object at the *link*
+   position undershot the *taxel cloud* position by enough to miss contact entirely. Fixed with
+   `scripts/calibrate_taxels.py`, which transforms each probe's local offset by the link's actual
+   world quaternion to get the true taxel-surface centroid.
+
+3. **Self-collision caps how far fingers actually close.** Under PD position control
+   (`control_dofs_position`), the three bend joints per finger don't reach a shared target
+   together — self-collision between curling finger segments (noted in Genesis's own startup
+   warning: "Filtered out geometry pairs causing self-collision for the neutral configuration")
+   stalls some joints well short of the commanded target while others overshoot. The achieved
+   pose has to be measured empirically (by running and reading back `get_dofs_position`), not
+   predicted from the control target.
+
+4. **`KinematicTaxel` has no object filter, unlike `ElastomerTaxel`.** This was the key bug:
+   `ElastomerTaxel` takes a `track_link_idx` restricting it to one target link, but
+   `KinematicTaxel` has no equivalent — left unfiltered, it also reports contact from the hand's
+   *own* self-collision (fingers/palm touching each other), not just the external object. This
+   produced a force/torque reading on the middle finger that looked plausible but didn't
+   correlate with actual distance to the sphere, while `ElastomerTaxel` (correctly restricted via
+   `track_link_idx=(obj.base_link_idx,)`) stayed at zero the whole time — that mismatch is what
+   exposed the bug. Fixed by passing `filter_link_idx` excluding every one of the hand's own
+   links on each `KinematicTaxel` sensor, so only genuine external contact registers.
+
+**Result after those fixes:** a free (non-fixed) object got knocked out of two fingers' reach by
+real rigid-body contact dynamics once the third touched first, so the object was pinned
+(`fixed=True`) to isolate the sensing question from grasp dynamics. The best run
+(`docs/hand_object_demo_best_run.log`) shows the middle fingertip registering real, physically
+consistent contact — force ≈1.16–1.43N with torque ≈0.07–0.10 (both scale together as expected
+for an off-center contact patch, `torque ≈ r × F`), rising only once the finger closes onto the
+sphere and reading exactly zero during the settle phase. Index/middle/ring simultaneous contact
+with nonzero elastomer deformation on all three was not reached within the time available — each
+geometry fix (self-collision-safe bend targets, taxel-surface placement) kept shifting where the
+other two fingers needed the object to be, and iterating all three into alignment at once is a
+multi-variable search I didn't finish closing.
+
+## Follow-up: trying the paper's own grasp pipeline instead
+
+Given the manual calibration above was fighting self-collision and placement issues that the
+paper's own task/grasp-sampling code (`conf/sample_grasps/*.yaml`, the `grasp_lift` task) already
+solves, I tried constructing their actual Eden task env directly
+(`scripts/run_grasp_lift_probe.py`, via `registry.get_task_config` + `RslRlVecEnvWrapper`) instead
+of continuing to hand-roll geometry.
+
+This hit a different, more fundamental problem: `src/shared_terms.py` — imported by every task
+config in the repo, including `grasp_lift` and `in_fingers_rotate` — does
+`from eden.managers.terms.utils import soft_dof_pos_violation`, and that module does not exist
+anywhere in the vendored `Eden/` snapshot (confirmed by searching the whole tree for both the
+module and the function name). This means **task/environment construction is currently broken for
+every task in this repo checkout**, not just the ones I tried — `main.py` itself would hit the
+same import error for any `--task`, in both train and play modes. Full traceback in
+`docs/grasp_lift_pipeline_bug.log`. This looks like an artifact of the vendoring/stripping process
+described in the top-level README ("Eden... stripped to the modules this project imports") having
+dropped a module `shared_terms.py` still needs. Worth flagging upstream if you're in touch with
+the authors, since it blocks reproducing the actual paper tasks, not just this follow-up demo.
+
+## Honest summary
+
+- **Sensor physics (pytest suite): fully verified, high confidence.** 24/24 passed with
+  closed-form and superposition-level assertions.
+- **Real hand on a real object: partially verified.** One fingertip of the paper's actual Allegro
+  asset shows correct, physically consistent force/torque from real contact with a real object,
+  using the real 368-taxel layout. Full 3-finger simultaneous contact with nonzero deformation
+  wasn't reached in the time available.
+- **Paper's own task pipeline: blocked**, by an apparent packaging bug unrelated to the sensing
+  claims themselves.
